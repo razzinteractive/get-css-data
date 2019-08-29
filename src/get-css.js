@@ -269,7 +269,13 @@ function getCssData(options) {
 
                 if (settings.useCSSOM) {
                     cssText = Array.apply(null, node.sheet.cssRules)
-                        .map(rule => rule.cssText)
+                        .map(rule => {
+                            if (rule && typeof rule.cssText === 'string') {
+                                return rule.cssText;
+                            }
+
+                            return '';
+                        })
                         .join('');
                 }
 

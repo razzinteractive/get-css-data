@@ -272,7 +272,10 @@ function getUrls(urls) {
                 var cssText = node.textContent;
                 if (settings.useCSSOM) {
                     cssText = Array.apply(null, node.sheet.cssRules).map(function(rule) {
-                        return rule.cssText;
+                        if (rule && typeof rule.cssText === "string") {
+                            return rule.cssText;
+                        }
+                        return "";
                     }).join("");
                 }
                 handleSuccess(cssText, i, node, location.href);
