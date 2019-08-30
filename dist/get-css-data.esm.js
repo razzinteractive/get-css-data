@@ -270,13 +270,16 @@ function getUrls(urls) {
                 });
             } else if (isStyle) {
                 var cssText = node.textContent;
-                if (settings.useCSSOM) {
+                if (!cssText && settings.useCSSOM) {
                     cssText = Array.apply(null, node.sheet.cssRules).map(function(rule) {
                         if (rule && typeof rule.cssText === "string") {
                             return rule.cssText;
                         }
                         return "";
                     }).join("");
+                }
+                if (cssText.includes("var(--")) {
+                    console.log("cssText:", cssText);
                 }
                 handleSuccess(cssText, i, node, location.href);
             } else {

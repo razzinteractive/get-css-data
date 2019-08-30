@@ -280,10 +280,9 @@ function getCssData(options) {
                         .join('');
                 }
 
-                if (cssText.includes("var(--")) {
+                if (cssText.includes('var(--')) {
                     console.log('cssText:', cssText);
                 }
-
 
                 handleSuccess(cssText, i, node, location.href);
             }
