@@ -269,10 +269,8 @@ function getCssData(options) {
 
                 // check cssRules in sheet property if text content is empty
                 if (!cssText && settings.useCSSOM) {
-                    console.log('node.sheet.cssRules:', node.sheet.cssRules);
                     cssText = Array.apply(null, node.sheet.cssRules)
                         .map(rule => {
-                            console.log('rule:', rule);
                             if (rule && typeof rule.cssText === 'string') {
                                 return rule.cssText;
                             }
@@ -282,7 +280,10 @@ function getCssData(options) {
                         .join('');
                 }
 
-                console.log('cssText:', cssText);
+                if (cssText.includes("var(--")) {
+                    console.log('cssText:', cssText);
+                }
+
 
                 handleSuccess(cssText, i, node, location.href);
             }
