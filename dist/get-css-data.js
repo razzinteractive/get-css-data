@@ -281,7 +281,9 @@
                             }
                             return "";
                         }).join("");
-                        console.log("getCssData cssText:", cssText);
+                        if (cssText.includes("var")) {
+                            console.log("getCssData cssText:", cssText);
+                        }
                     }
                     handleSuccess(cssText, i, node, location.href);
                 } else {
