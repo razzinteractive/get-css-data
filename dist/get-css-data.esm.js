@@ -277,9 +277,7 @@ function getUrls(urls) {
                         }
                         return "";
                     }).join("");
-                }
-                if (cssText.includes("var(--")) {
-                    console.log("cssText:", cssText);
+                    console.log("getCssData cssText:", cssText);
                 }
                 handleSuccess(cssText, i, node, location.href);
             } else {
